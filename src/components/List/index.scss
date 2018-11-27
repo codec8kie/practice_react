@@ -1,0 +1,60 @@
+@function calc-width ($col) {
+    @return 100% / $col
+}
+
+.list-container {
+    border-bottom: solid 1px #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    & .list-container-area {
+        // width: 16.66%;
+        font-size: 14px;
+        color: #2c2c2c;
+        text-align: center;
+        padding: 12px 0 14px 0;
+
+        & .list-container-detail-anchor {
+            color: #2c2c2c;
+        }
+
+        & .list-container-download-anchor {
+            color: #ed3e5e;
+        }
+
+        & .list-container-area-remove {
+            width: 58px;
+            height: 28px;
+            background-color: #fff;
+            border: solid 1px #2c2c2c;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+    }
+
+    .list-container-area:nth-child(1) {
+        width: calc-width(2);
+    }
+
+    .list-container-area:nth-child(2) {
+        width: calc-width(2);
+    }
+
+    .list-container-area:nth-child(3) {
+        width: calc-width(2);
+    }
+
+    .list-container-area:nth-child(4) {
+        width: calc-width(4);
+    }
+
+    .list-container-area:nth-child(5) {
+        width: calc-width(4);
+    }
+
+    .list-container-area:nth-child(6) {
+        width: calc-width(4);
+    }
+}
