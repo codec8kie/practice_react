@@ -1,20 +1,33 @@
-@function calc-width ($col) {
-    @return 100% / $col
-}
-
 .list-item-container {
-    box-shadow: 0 1px 0 0 #b7b7b7, 0 -1px 0 0 #e0e0e0;
+    border-bottom: solid 1px #e0e0e0;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 
     & .list-item-container-area {
         // width: 16.66%;
         font-size: 14px;
-        color: #8c8c8c;
+        color: #2c2c2c;
         text-align: center;
         padding: 12px 0 14px 0;
+
+        & .list-item-container-detail-anchor {
+            color: #2c2c2c;
+        }
+
+        & .list-item-container-download-anchor {
+            color: #ed3e5e;
+        }
+
+        & .list-item-container-area-remove {
+            width: 58px;
+            height: 28px;
+            background-color: #fff;
+            border: solid 1px #2c2c2c;
+            border-radius: 14px;
+            cursor: pointer;
+        }
     }
 
     .list-item-container-area:nth-child(1) {

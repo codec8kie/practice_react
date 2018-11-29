@@ -1,0 +1,29 @@
+.detail-item-container {
+    border-bottom: solid 1px #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    & .detail-item-container-area {
+        font-size: 14px;
+        color: #2c2c2c;
+        padding: 12px 0 14px 0;
+
+        & .detail-item-container-download-anchor {
+            color: #2c2c2c;
+        }
+    }
+
+    .detail-item-container-area:nth-child(1) {
+        align-self: flex-start;
+        width: calc-width(1);
+        padding-left: 40px;
+    }
+
+    .detail-item-container-area:nth-child(2) {
+        width: calc-width(9);
+        align-self: flex-end;
+        text-align: center;
+    }
+}

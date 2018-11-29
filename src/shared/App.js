@@ -5,7 +5,7 @@ import { Home, Detail } from 'pages';
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/detail/:pid" component={Detail}/>
             </div>

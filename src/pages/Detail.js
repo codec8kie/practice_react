@@ -1,45 +1,29 @@
 import React, { Component } from 'react';
-import DetailItem from '../components/DetailItem';
 import DetailList from '../components/Detail';
 import Dummy from './dummy.json';
 
 class Detail extends Component {
     state = {
         data: Dummy.data,
-        files: null
+        detail: null
     };
 
-    getMusicList = () => {
-        const detailList = this.state.files.map((item, index) => {
-            return (
-                <DetailList
-                key={index}
-                filename={item.filename}
-                link={item.link}
-                />
-            );
-        })
-
-        return detailList;
-    }
-
     componentDidMount() {
-        this.state.data.filter((item) => {
-            if ( item.pid_sound === parseInt(this.props.match.params.pid) ) {
-                this.setState({
-                    files: item.files
-                });
-            }
+        const { data } = this.state;
+        const { params } = this.props.match;
+        this.setState({
+            detail: data.filter(item => item.pid_sound === parseInt(params.pid))
         });
     }
 
     render() {
-        if ( this.state.files === null ) return false;
+        const { detail } = this.state;
+        if (detail === null) return false;
+
         return (
-            <div>
-                <DetailItem />
-                {this.getMusicList()}
-            </div>
+            <DetailList
+            detail={detail}
+            />
         );
     }
 };

@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
-import ListItem from '../components/ListItem';
 import List from '../components/List';
 import Dummy from './dummy.json';
 
 class Home extends Component {
-    static defaultProps = {
+    state = {
+        page: 0,
+        itemCnt: 3,
         data: Dummy.data
     };
 
-    getList = () => {
-        if ( this.props.data.length !== 0) {
-            const list = this.props.data.map((item, index) => {
-                return (
-                    <List
-                    key={index}
-                    idx={item.pid_sound}
-                    name={item.nickname}
-                    title={item.title}
-                    cnt={item.cnt_files}
-                    allowed={parseInt(item.b_allowed) === 1 ? '승인' : '미승인'}
-                    category="일반/게임"
-                    />
-                );
-            })
-
-            return list;
-        }
-
-        return false;
+    onRemove = (pid) => {
+        const { data } = this.state;
+        this.setState({
+            data: data.filter(item => item.pid_sound !== pid)
+        });
     }
 
     render() {
         return (
-            <div>
-                <ListItem />
-                {this.getList()}
-            </div>
+            <List
+            itemCnt={this.state.itemCnt}
+            page={this.state.page}
+            data={this.state.data}
+            onRemove={this.onRemove}
+            />
         );
     }
 }

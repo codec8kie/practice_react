@@ -1,0 +1,3 @@
+@function calc-width ($col) {
+    @return 100% / $col
+}

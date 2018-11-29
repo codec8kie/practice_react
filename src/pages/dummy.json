@@ -2,13 +2,13 @@
   "data": [
     {
       "pid_sound" : 1,
-      "nickname":"홍길동",
+      "nickname":"홍길동쓰",
       "title": "음원파일1",
       "date_time": "2018-11-07 17:52:45",
       "cnt_files" : 2,
       "b_allowed": 0,
       "b_normal": 1,
-      "b_game": 1,
+      "b_game": 0,
       "files": [
         {
           "filename" : "samsung1",
@@ -25,7 +25,7 @@
       "date_time": "2018-11-07 17:52:45",
       "cnt_files" : 2,
       "b_allowed": 0,
-      "b_normal": 1,
+      "b_normal": 0,
       "b_game": 1,
       "files": [
         {

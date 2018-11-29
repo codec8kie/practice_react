@@ -1,26 +1,70 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import ListItem from '../ListItem';
+import Paging from '../Paging';
 import './index.scss';
 
 class List extends Component {
     static defaultProps = {
-        idx: null,
-        name: null,
-        title: null,
-        cnt: null,
-        allowed: null,
-        category: null
+        itemCnt: null,
+        page: null,
+        data: null
     };
 
-    render() {
+    getListItems = () => {
+        const { itemCnt, page, data, onRemove } = this.props;
+        if ( data.length !== 0 ) {
+            const listItems = data.map((item, index) => {
+                if (true) {
+                    return (
+                        <ListItem
+                        key={index}
+                        data={item}
+                        onRemove={onRemove}
+                        />
+                    );
+                }
+            });
+
+            return listItems;
+        }
+
         return (
-            <div className="list-container">
-                <div className="list-container-area">{this.props.name}</div>
-                <div className="list-container-area"><Link to={'/detail/' + this.props.idx} className="list-container-detail-anchor">{this.props.title}</Link></div>
-                <div className="list-container-area"><Link to={'/detail/' + this.props.idx} class="list-container-download-anchor">{this.props.cnt}개</Link></div>
-                <div className="list-container-area">{this.props.allowed}</div>
-                <div className="list-container-area">{this.props.category}</div>
-                <div className="list-container-area"><button type="button" class="list-container-area-remove">삭제</button></div>
+            <div className="list-items-nodata">등록된 음원이 존재하지 않습니다.</div>
+        );
+    }
+
+    pagination = (val) => {
+        // 1은 처음, 2는 이전, 3은 다음, 4는 끝
+        console.log(val);
+    }
+
+    componentDidMount() {
+        const { page, itemCnt } = this.props;
+        if (page !== null) {
+            // console.log(itemCnt);
+        }
+    }
+
+    render() {
+        const { data } = this.props;
+        if (data === null) return false;
+
+        return (
+            <div className="List">
+                <div className="list-container">
+                    <div className="list-container-area">닉네임</div>
+                    <div className="list-container-area">음원 제목</div>
+                    <div className="list-container-area">파일종류</div>
+                    <div className="list-container-area">승인여부</div>
+                    <div className="list-container-area">음원타입</div>
+                    <div className="list-container-area"></div>
+                </div>
+                <div className="list-items-container">
+                    {this.getListItems()}
+                </div>
+                <div className="list-page-container">
+                    <Paging handleClick={(val) => { this.pagination(val); }}/>
+                </div>
             </div>
         );
     }
